@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Класс Превосходства: 4-й год. Том 1.5</title>
+    <style>
+        body { 
+            background-color: #f7f9fa; 
+            color: #2c3e50; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            margin: 0; 
+            padding: 20px 10px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        .main-container { 
+            max-width: 550px; 
+            width: 100%; 
+            background: #ffffff; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        /* Общие стили для всех картинок в ленте */
+        .image-block {
+            position: relative;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .media-img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+            display: block;
+        }
+
+        /* Кнопка скачать под каждой картинкой */
+        .btn-download {
+            display: inline-block;
+            background-color: #e2e8f0;
+            color: #4a5568;
+            text-decoration: none;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin-top: 10px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-download:hover { 
+            background-color: #cbd5e1; 
+            color: #1e293b;
+        }
+
+        h1 { font-size: 24px; margin: 15px 0 5px 0; color: #1a1a1a; }
+        .author { font-size: 16px; color: #7f8c8d; margin-bottom: 35px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
+        
+        /* Кнопка старта чтения в самом низу */
+        .btn-start { 
+            display: block; 
+            background-color: #8b0000; 
+            color: #ffffff; 
+            text-decoration: none; 
+            padding: 16px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            border-radius: 30px; 
+            box-shadow: 0 4px 14px rgba(139,0,0,0.3);
+            margin: 40px auto 20px auto;
+            max-width: 280px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-start:hover { background-color: #a30000; }
+        .btn-start:active { transform: scale(0.98); }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    
+    <!-- 1. ГЛАВНАЯ ОБЛОЖКА -->
+    <div class="image-block">
+        <img src="cote.png" alt="Обложка" class="media-img">
+        <a href="cote.png" download="cote.png" class="btn-download">💾 Скачать Обложку</a>
+    </div>
+
+    <h1>Том 1.5 — Новая шахматная доска</h1>
+    <div class="author">Сюжет: Ayanokoji031</div>
+
+    <!-- 2. КАРТОЧКА: АЯНОКОДЗИ И АРИСУ -->
+    <div class="image-block">
+        <img src="arisu.png" alt="Аянокодзи и Арису" class="media-img">
+        <a href="arisu.png" download="arisu.png" class="btn-download">💾 Скачать Арт</a>
+    </div>
+
+    <!-- 3. КАРТОЧКА: МИНАМОТО -->
+    <div class="image-block">
+        <img src="minamoto.png" alt="Минамото — 6 поколение" class="media-img">
+        <a href="minamoto.png" download="minamoto.png" class="btn-download">💾 Скачать Арт</a>
+    </div>
+
+    <!-- 4. КАРТОЧКА: АЯНОКОДЗИ И РЮЭН -->
+    <div class="image-block">
+        <img src="ryuen.png" alt="Аянокодзи и Рюэн" class="media-img">
+        <a href="ryuen.png" download="ryuen.png" class="btn-download">💾 Скачать Арт</a>
+    </div>
+
+    <!-- ФИНАЛЬНАЯ КНОПКА ЧТЕНИЯ -->
+    <a href="chapter1.html" class="btn-start">НАЧАТЬ ЧТЕНИЕ</a>
+
+</div>
+
+</body>
+</html>
