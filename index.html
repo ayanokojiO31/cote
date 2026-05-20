@@ -61,6 +61,78 @@
         h1 { font-size: 24px; margin: 15px 0 5px 0; color: #1a1a1a; }
         .author { font-size: 16px; color: #7f8c8d; margin-bottom: 35px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
         
+        /* СТИЛИ АУДИОПЛЕЕРА */
+        .music-player-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px auto 10px auto;
+            max-width: 440px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        .music-player-box h3 {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+            color: #1e293b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .track-select {
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            background-color: #ffffff;
+            color: #334155;
+            margin-bottom: 15px;
+            outline: none;
+            cursor: pointer;
+        }
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+        audio {
+            flex-grow: 1;
+            height: 40px;
+        }
+        .btn-loop {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            border: none;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .btn-loop.active {
+            background-color: #8b0000;
+            color: #ffffff;
+        }
+        .music-download-wrapper {
+            text-align: center;
+            margin-top: 12px;
+        }
+        .btn-music-download {
+            font-size: 13px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .btn-music-download:hover {
+            color: #1e293b;
+            text-decoration: underline;
+        }
+
         /* Кнопка старта чтения в самом низу */
         .btn-start { 
             display: block; 
@@ -72,7 +144,7 @@
             font-weight: bold; 
             border-radius: 30px; 
             box-shadow: 0 4px 14px rgba(139,0,0,0.3);
-            margin: 40px auto 20px auto;
+            margin: 30px auto 20px auto;
             max-width: 280px;
             transition: background 0.2s, transform 0.1s;
         }
@@ -87,34 +159,92 @@
     <!-- 1. ГЛАВНАЯ ОБЛОЖКА -->
     <div class="image-block">
         <img src="cote.png" alt="Обложка" class="media-img">
-        <a href="cote.png" download="cote.png" class="btn-download">💾 Скачать Обложку</a>
+        <a href="cote.png" download="cote.png" class="btn-download"> Скачать обложку</a>
     </div>
 
     <h1>Том 1.5 — Новая шахматная доска</h1>
-    <div class="author">Сюжет: Ayanokoji031</div>
+    <div class="author">Сюжет: Ayanokoji031 x Sina</div>
 
     <!-- 2. КАРТОЧКА: АЯНОКОДЗИ И АРИСУ -->
     <div class="image-block">
         <img src="arisu.png" alt="Аянокодзи и Арису" class="media-img">
-        <a href="arisu.png" download="arisu.png" class="btn-download">💾 Скачать Арт</a>
+        <a href="arisu.png" download="arisu.png" class="btn-download"> Скачать изображение</a>
     </div>
 
     <!-- 3. КАРТОЧКА: МИНАМОТО -->
     <div class="image-block">
         <img src="minamoto.png" alt="Минамото — 6 поколение" class="media-img">
-        <a href="minamoto.png" download="minamoto.png" class="btn-download">💾 Скачать Арт</a>
+        <a href="minamoto.png" download="minamoto.png" class="btn-download">Скачать изображение</a>
     </div>
 
     <!-- 4. КАРТОЧКА: АЯНОКОДЗИ И РЮЭН -->
     <div class="image-block">
         <img src="ryuen.png" alt="Аянокодзи и Рюэн" class="media-img">
-        <a href="ryuen.png" download="ryuen.png" class="btn-download">💾 Скачать Арт</a>
+        <a href="ryuen.png" download="ryuen.png" class="btn-download"> Скачать изображение</a>
+    </div>
+
+    <!-- ВСТРОЕННЫЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
+    <div class="music-player-box">
+        <h3>🎵 Музыкальное сопровождение</h3>
+        
+        <!-- Выбор трека -->
+        <select id="trackSelector" class="track-select">
+            <option value="zaq_casteroom.mp3">ZAQ — Caste Room (COTE Опенинг)</option>
+            <option value="zaq_danceinthegame.mp3">ZAQ — Dance in the Game (COTE Опенинг)</option>
+            <option value="zaq_minorpiece.mp3">ZAQ — Minor Piece (COTE Опенинг)</option>
+            <option value="myordinarylife.mp3">The Living Tombstone — My Ordinary Life</option>
+            <option value="enryu_cote.mp3">Enryu — Classroom of the elite theme</option>
+        </select>
+
+        <!-- Контроллеры -->
+        <div class="audio-controls">
+            <audio id="mainAudio" controls src="zaq_casteroom.mp3"></audio>
+            <button id="loopBtn" class="btn-loop">🔇 Повтор: ВЫКЛ</button>
+        </div>
+
+        <!-- Ссылка на скачивание текущей песни -->
+        <div class="music-download-wrapper">
+            <a id="musicDownloadLink" href="zaq_casteroom.mp3" download="zaq_casteroom.mp3" class="btn-music-download">📥 Скачать этот трек (.mp3)</a>
+        </div>
     </div>
 
     <!-- ФИНАЛЬНАЯ КНОПКА ЧТЕНИЯ -->
     <a href="chapter1.html" class="btn-start">НАЧАТЬ ЧТЕНИЕ</a>
 
 </div>
+
+<script>
+    const audio = document.getElementById('mainAudio');
+    const selector = document.getElementById('trackSelector');
+    const loopBtn = document.getElementById('loopBtn');
+    const downloadLink = document.getElementById('musicDownloadLink');
+
+    // Переключение треков в плеере
+    selector.addEventListener('change', (e) => {
+        const selectedTrack = e.target.value;
+        
+        // Меняем источник аудио и ссылку на скачивание
+        audio.src = selectedTrack;
+        downloadLink.href = selectedTrack;
+        downloadLink.download = selectedTrack;
+        
+        // Автоматически запускаем песню при смене
+        audio.play();
+    });
+
+    // Функция кнопки повтора текущей песни
+    loopBtn.addEventListener('click', () => {
+        audio.loop = !audio.loop;
+        
+        if (audio.loop) {
+            loopBtn.classList.add('active');
+            loopBtn.textContent = '🔊 Повтор: ВКЛ';
+        } else {
+            loopBtn.classList.remove('active');
+            loopBtn.textContent = '🔈 Повтор: ВЫКЛ';
+        }
+    });
+</script>
 
 </body>
 </html>
